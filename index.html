@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画板小案例</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+	<div class="wrapper">
+		
+		<canvas class="cavs" width="1000" height="500"></canvas>
+		<ul class="btn-list">
+			<li><input type="color" id="colorBoard" value="colorBoard"></li>
+			<li><input type="button" id="clearBoard" value="清屏"></li>
+			<li><input type="button" id="eraser" value="橡皮"></li>
+			<li><input type="button" id="rescind" value="撤销"></li>
+			<li><input type="range" id="lineRuler" value='0' value="线条" min="1" max="30"></li>
+		</ul>
+		
+	</div>
+<script src="jquery.min.js"></script>
+<script src="./index.js"></script>	
+</body>
+</html>

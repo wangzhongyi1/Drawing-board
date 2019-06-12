@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>画板</title>
+	<style>
+		canvas{
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+
+	<canvas width="500" height="500" id="canvas"></canvas>
+	
+
+<script>
+	/*
+		canvas.getContext('2d')
+		ctx.beginPath() // 开启新路径
+		ctx.moveTo(x,y)	// 起点
+			lineTo(x,y) // 从起点到终点
+			stroke() 描边    fill()  填充
+			strokeStyle = '' // 描边颜色 
+			fillStyle = ''	 // 填充颜色
+		ctx.closePath() // 关闭路径 自动闭合
+		ctx.clearRect(x,y,width,height) // 清除画布方形区域
+		ctx.getImageData() //putImageData() // 像素数据抓取
+
+		ctx.strokeStyle,和ctx.fillStyle  要在ctx.stroke,和ctx.fill 之前
+	*/
+
+	var canvas = document.getElementById('canvas')
+	ctx = canvas.getContext('2d')
+
+	ctx.beginPath()
+	ctx.moveTo(100,100)
+	ctx.lineTo(200,100)
+	ctx.lineTo(200,200)
+	ctx.strokeStyle = '#f40'
+	ctx.lineWidth = 20 // 线条的宽度
+	ctx.fillStyle = '#ccc'
+	ctx.fill()
+
+	ctx.closePath() // 关闭路径,自动闭合
+	ctx.stroke() // 一定要描边，不然看不到
+
+
+	ctx.beginPath() // 开启一个新路径，不然会被上面一个影响
+	ctx.moveTo(300,100)
+	ctx.lineTo(400,100)
+	ctx.lineTo(400,200)
+	ctx.closePath()
+	ctx.lineWidth = 10
+	ctx.strokeStyle = 'green'
+	ctx.fillStyle = '#f55'
+	ctx.fill()
+	ctx.stroke()
+	
+	var img = ctx.getImageData(70,100,200,200) // 复制(70,100) 到(200,200) 这个点的图形
+	ctx.putImageData(img, 70,300) // 从 (70,300) 这个点开始粘贴上面复制的图形
+	ctx.clearRect(70,300,100,100) //从(70,300) 开始清除宽100,高100的矩形区域
+</script>
+</body>
+</html>
